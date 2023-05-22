@@ -68,6 +68,7 @@ module.exports = {
         try{
             console.log(req.params)
             const theUser = User.findOne()
+            res.status(200).json(theUser)
 
         }
         catch(err){
