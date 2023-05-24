@@ -3,11 +3,11 @@ require('dotenv').config();
 currentUserId = null;
 module.exports.secret = process.env.SECRET_KEY;
 module.exports.authenticate = (req, res, next) => {
-  jwt.verify(req.cookies.usertoken, process.env.SECRET_KEY, (err, payload) => {
-    if (err) { 
+  jwt.verify(req.cookies.userToken, process.env.SECRET_KEY, (err, payload) => {
+    if (err) {
       res.status(401).json({verified: false});
     } else {
-      currentUserId = payload.id;
+      currentUserId = payload._id;
       next();
     }
   });

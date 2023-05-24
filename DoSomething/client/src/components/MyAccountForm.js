@@ -4,47 +4,47 @@ import axios from 'axios';
 const MyAccountForm = () => {
     const navigate = useNavigate();
     //keep track of what is being typed via useState hook
-    const [activityList, setActivityList] = useState([]); 
-    const [subscriptionList, setSubscriptionList] = useState([]); 
+    const [eventList, setEventList] = useState([]); 
+    const [participantList, setParticipantList] = useState([]); 
     const api = axios.create({ withCredentials: true });
 
     useEffect(() => {
-        api.get('http://localhost:8000/api/my-activities').then(response=>{
+        api.get('http://localhost:8000/api/my-events').then(response=>{
           let list = [];
-          for (let i in response.data.activities) {
-            list.push(response.data.activities[i]);
+          for (let i in response.data.events) {
+            list.push(response.data.events[i]);
           }
 
           console.log(list);
 
-          setActivityList(list)
+          setEventList(list)
         });
 
         api.get('http://localhost:8000/api/subscriptions').then(response=>{
             let list = [];
-            for (let i in response.data.subscriptions) {
-              list.push(response.data.subscriptions[i]);
+            for (let i in response.data.participants) {
+              list.push(response.data.participants[i]);
             }
-            console.log("Subscription");
+            console.log("Participant");
             console.log(list);
   
-            setSubscriptionList(list)
+            setParticipantList(list)
           });
     
       }, []);
 
 
-      const deleteActivity = (id) => {
-        api.delete('http://localhost:8000/api/activity/delete/' + id)
+      const deleteEvent = (id) => {
+        api.delete('http://localhost:8000/api/event/delete/' + id)
             .then(res => {
                 console.log(res); // always console log to get used to tracking your data!
-                setActivityList(  
+                setEventList(  
                 [ 
-                ...activityList.filter(activity => activity._id != id), 
+                ...eventList.filter(event => event._id != id), 
               ]);
-              setSubscriptionList(  
+              setParticipantList(  
                 [ 
-                ...subscriptionList.filter(subscription => subscription.activityId != id), 
+                ...participantList.filter(participant => participant.eventId != id), 
               ]);
             })
             .catch(err => console.log(err))
@@ -52,40 +52,6 @@ const MyAccountForm = () => {
 
     return (
         <div className="container">
-            <div className="top1">
-                <div className="top-left">
-                    <h2>DoSomething Together</h2>
-                    <p>Let's meet, make friends and enjoy life!</p>
-                </div>
-                <div className="top-right">
-                <div>
-                <span className="menu-item">
-                <Link to={"/dashboard"}>
-                    Dashboard
-                </Link>
-                </span>
-                <span className="menu-item">
-                <Link to={"/myAccount"}>
-                    My Account
-                </Link>
-                </span>
-                </div>
-                <div>
-                <span className="menu-item">
-                <Link to={"/createActivity"}>
-                    Create Activity
-                </Link>
-                </span>
-                <span className="menu-item">
-                <Link to={"/logout"}>
-                    Log Out
-                </Link>
-                </span>
-                </div>
-                </div>
-            </div>
-
-            
             <table className="table">
             <tr>
                 <th scope="col">Location</th>
@@ -94,22 +60,22 @@ const MyAccountForm = () => {
             </tr>
             <tbody>
             {
-                    activityList.map( (activity, index) => 
-                    <tr className='activity'>
-                    <td>{activity.location}
+                    eventList.map( (event, index) => 
+                    <tr className='event'>
+                    <td>{event.location}
                     </td>
-                    <td>{activity.activity}</td>
+                    <td>{event.activity}</td>
                     <td>
                     <div>
-                        <Link to={"/activityDetail/" + activity._id}>
+                        <Link to={"/eventDetail/" + event._id}>
                             View
                         </Link>
                         <span className="space">|</span>
-                        <Link to={"/editActivity/" + activity._id}>
+                        <Link to={"/editEvent/" + event._id}>
                             Edit
                         </Link>
                         <span className="space">|</span>
-                        <Link onClick={(e)=>{deleteActivity(activity._id)}}>
+                        <Link onClick={(e)=>{deleteEvent(event._id)}}>
                             Delete
                         </Link>
                         </div>
@@ -131,14 +97,14 @@ const MyAccountForm = () => {
             </tr>
             <tbody>
             {
-                    subscriptionList.map( (subscription, index) => 
-                    <tr className='activity'>
-                    <td>{subscription.location}
+                    participantList.map( (participant, index) => 
+                    <tr className='event'>
+                    <td>{participant.location}
                     </td>
-                    <td>{subscription.activity}</td>
+                    <td>{participant.activity}</td>
                     <td>
                     <div>
-                        <Link to={"/activityDetail/" + subscription.activityId}>
+                        <Link to={"/eventDetail/" + participant.eventId}>
                             View
                         </Link>
                         </div>

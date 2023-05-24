@@ -9,7 +9,7 @@ const ParticipantDetail = () => {
 
     useEffect(() => {
 
-        api.get('http://localhost:8000/api/user/detail/' + id).then(response=>{
+        api.get('http://localhost:8000/api/user/' + id).then(response=>{
             setParticipant(response.data.participant);
         })
         .catch(err => console.log(err))
@@ -18,40 +18,8 @@ const ParticipantDetail = () => {
     
     return (
         <div className="container">
-            <div className="top1">
-                <div className="top-left">
-                    <h2>DoSomething Together</h2>
-                    <p>Let's meet, make friends and enjoy life!</p>
-                </div>
-                <div className="top-right">
-                <div>
-                <span className="menu-item">
-                <Link to={"/dashboard"}>
-                    Dashboard
-                </Link>
-                </span>
-                <span className="menu-item">
-                <Link to={"/myAccount"}>
-                    My Account
-                </Link>
-                </span>
-                </div>
-                <div>
-                <span className="menu-item">
-                <Link to={"/createActivity"}>
-                    Create Activity
-                </Link>
-                </span>
-                <span className="menu-item">
-                <Link to={"/logout"}>
-                    Log Out
-                </Link>
-                </span>
-                </div>
-                </div>
-            </div>
             <div className="participant">
-            <div className="participant-name"><h2>{participant.firstName}</h2></div><div className="participant-picture"><img src={participant.picture} width="50" /></div>
+            <div className="participant-name"><h2>{participant.firstName}</h2></div><div className="participant-picture"><img src="https://i.ibb.co/R6XWKCp/profile.jpg" width="50" /></div>
             </div>
             <table>
             <tbody>

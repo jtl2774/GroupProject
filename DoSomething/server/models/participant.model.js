@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const SubscriptionSchema = new mongoose.Schema({
+const ParticipantSchema = new mongoose.Schema({
     userId: {
         type: String,
         required:  [
@@ -7,7 +7,7 @@ const SubscriptionSchema = new mongoose.Schema({
         ],
         trim: true
     },
-    activityId: {
+    eventId: {
         type: String,
         required:  [
             true
@@ -16,5 +16,5 @@ const SubscriptionSchema = new mongoose.Schema({
     }
 
 }, { timestamps: true });
-module.exports = mongoose.model('Subscription', SubscriptionSchema);
+module.exports = mongoose.model('Participant', ParticipantSchema);
 

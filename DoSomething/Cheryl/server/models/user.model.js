@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 //install 'validator' through terminal and it is used to validate several format for us.
 //{isEmail} is one function of it to check the email format is correct
 const {isEmail} = require('validator');
@@ -65,7 +65,7 @@ UserSchema.virtual('confirmPassword')
 //then run pre() to check if the entered passwords match each other before go through form validation
 UserSchema.pre('validate', function(next){
     if(this.confirmPassword !== this.password){
-        this.invalidate('confirmPassword', 'Passwords not match')
+        this.invalidate('confirmPassword', 'Passwords not match 2')
     }
     next();//here means form validation
 })

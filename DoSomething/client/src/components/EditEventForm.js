@@ -1,25 +1,39 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
-import { Link, useNavigate } from 'react-router-dom'
-const AddActivityForm = () => {
+import { useParams, Link, useNavigate } from 'react-router-dom'
+const EditEventForm = () => {
+    const {id} = useParams(); 
     const [location, setLocation] = useState(""); 
     const [activity, setActivity] = useState(""); 
-    const [dateAndTime, setDateAndTime] = useState(""); 
+    const [date, setDate] = useState(""); 
     const [address, setAddress] = useState(""); 
-    const [description, setDescription] = useState(""); 
+    const [desc, setDesc] = useState(""); 
     const [errors, setErrors] = useState([]); 
     const navigate = useNavigate();
     const api = axios.create({ withCredentials: true });
 
-    const addActivity= (e) => {
+    useEffect(() => {
+
+        api.get('http://localhost:8000/api/event/' + id).then(response=>{
+          console.log(response.data.event);
+          setLocation(response.data.event.location);
+          setActivity(response.data.event.activity);
+          setDate(response.data.event.date);
+          setAddress(response.data.event.address);
+          setDesc(response.data.event.desc);
+        });
+    
+      }, []);
+
+    const editEvent= (e) => {
         e.preventDefault();
 
-        api.post('http://localhost:8000/api/activities', {
+        api.put('http://localhost:8000/api/event/edit/' + id, {
             location,
             activity,
-            dateAndTime,
+            date,
             address,
-            description
+            desc
         })
             .then(res => {
                 console.log(res);
@@ -41,41 +55,9 @@ const AddActivityForm = () => {
     
     return (
         <div className="container">
-            <div className="top1">
-                <div className="top-left">
-                    <h2>DoSomething Together</h2>
-                    <p>Let's meet, make friends and enjoy life!</p>
-                </div>
-                <div className="top-right">
-                <div>
-                <span className="menu-item">
-                <Link to={"/dashboard"}>
-                    Dashboard
-                </Link>
-                </span>
-                <span className="menu-item">
-                <Link to={"/myAccount"}>
-                    My Account
-                </Link>
-                </span>
-                </div>
-                <div>
-                <span className="menu-item">
-                <Link to={"/createActivity"}>
-                    Create Activity
-                </Link>
-                </span>
-                <span className="menu-item">
-                <Link to={"/logout"}>
-                    Log Out
-                </Link>
-                </span>
-                </div>
-                </div>
-            </div>
             <fieldset>
             {errors.map((err, index) => <p className="error" key={index}>{err}</p>)}
-            <form onSubmit={addActivity}>
+            <form onSubmit={editEvent}>
             <table>
             <tbody>
             <tr>
@@ -103,9 +85,9 @@ const AddActivityForm = () => {
                 <label>Date/Time:</label>
                 </td><td> 
                 <input className="large-input" type="text" 
-                    name="dateAndTime" 
-                    value={dateAndTime}
-                    onChange = {(e)=>setDateAndTime(e.target.value)} />
+                    name="date" 
+                    value={date}
+                    onChange = {(e)=>setDate(e.target.value)} />
                 </td>
             </tr>
             <tr>
@@ -119,22 +101,22 @@ const AddActivityForm = () => {
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td colSpan="2">
                 <label>Description:</label>
                 </td>
             </tr>
             <tr>
-                <td colspan="2">
+                <td colSpan="2">
                 <textarea className="large-textarea" type="text" 
-                    name="description" 
-                    value={description}
-                    onChange = {(e)=>setDescription(e.target.value)} />
+                    name="desc" 
+                    value={desc}
+                    onChange = {(e)=>setDesc(e.target.value)} />
                 </td>
             </tr>
             <tr>
-            <td className="submit-button" colspan="2">
+            <td className="submit-button" colSpan="2">
                 <div className="center">
-            <input className="b1" type="submit" value="Create"/>
+            <input className="b1" type="submit" value="Edit"/>
             </div>
             </td>
             </tr>
@@ -145,5 +127,5 @@ const AddActivityForm = () => {
         </div>
     )
 }
-export default AddActivityForm;
+export default EditEventForm;
 

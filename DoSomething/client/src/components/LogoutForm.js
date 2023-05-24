@@ -28,32 +28,6 @@ const LoginForm = () => {
                     <h2>DoSomething Together</h2>
                     <p>Let's meet, make friends and enjoy life!</p>
                 </div>
-                <div className="top-right">
-                <div>
-                <span className="menu-item">
-                <Link to={"/dashboard"}>
-                    Dashboard
-                </Link>
-                </span>
-                <span className="menu-item">
-                <Link to={"/myAccount"}>
-                    My Account
-                </Link>
-                </span>
-                </div>
-                <div>
-                <span className="menu-item">
-                <Link to={"/createActivity"}>
-                    Create Activity
-                </Link>
-                </span>
-                <span className="menu-item">
-                <Link to={"/logout"}>
-                    Log Out
-                </Link>
-                </span>
-                </div>
-                </div>
             </div>
 
             Log Out

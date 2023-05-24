@@ -4,7 +4,7 @@ import axios from 'axios';
 const DashboardForm = () => {
     const navigate = useNavigate();
     //keep track of what is being typed via useState hook
-    const [activityList, setActivityList] = useState([]); 
+    const [eventList, setEventList] = useState([]); 
     const [userId, setUserId] = useState("");
     const api = axios.create({ withCredentials: true });
 
@@ -12,15 +12,15 @@ const DashboardForm = () => {
         let uId = localStorage.getItem("id");
         setUserId(uId);
 
-        api.get('http://localhost:8000/api/activities').then(response=>{
+        api.get('http://localhost:8000/api/events').then(response=>{
           let list = [];
-          for (let i in response.data.activities) {
-            list.push(response.data.activities[i]);
+          for (let i in response.data.events) {
+            list.push(response.data.events[i]);
           }
 
           console.log(list);
 
-          setActivityList(list)
+          setEventList(list)
         });
     
       }, []);
@@ -28,40 +28,6 @@ const DashboardForm = () => {
 
     return (
         <div className="container">
-            <div className="top1">
-                <div className="top-left">
-                    <h2>DoSomething Together</h2>
-                    <p>Let's meet, make friends and enjoy life!</p>
-                </div>
-                <div className="top-right">
-                <div>
-                <span className="menu-item">
-                <Link to={"/dashboard"}>
-                    Dashboard
-                </Link>
-                </span>
-                <span className="menu-item">
-                <Link to={"/myAccount"}>
-                    My Account
-                </Link>
-                </span>
-                </div>
-                <div>
-                <span className="menu-item">
-                <Link to={"/createActivity"}>
-                    Create Activity
-                </Link>
-                </span>
-                <span className="menu-item">
-                <Link to={"/logout"}>
-                    Log Out
-                </Link>
-                </span>
-                </div>
-                </div>
-            </div>
-
-            
             <table className="table">
             <tr>
                 <th scope="col">Location</th>
@@ -71,14 +37,14 @@ const DashboardForm = () => {
             </tr>
             <tbody>
             {
-                    activityList.map( (activity, index) => 
+                    eventList.map( (event, index) => 
                     <tr className='language-class'>
-                    <td>{activity.location}</td>
-                    <td>{activity.activity}</td>
-                    <td>{activity.organizer}</td>
+                    <td>{event.location}</td>
+                    <td>{event.activity}</td>
+                    <td>{event.organizer}</td>
                     <td>
                     <div>
-                        <Link to={"/activityDetail/" + activity._id}>
+                        <Link to={"/eventDetail/" + event._id}>
                             View
                         </Link>
                     </div>

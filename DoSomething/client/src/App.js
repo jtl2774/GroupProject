@@ -1,34 +1,36 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
-import AddActivityForm from './components/AddActivityForm';
-import RegistrationForm from './components/RegistrationForm';
-import LoginForm from './components/LoginForm';
+import AddEventForm from './components/AddEventForm';
 import LogoutForm from './components/LogoutForm';
 import DashboardForm from './components/DashboardForm';
-import EditActivityForm from './components/EditActivityForm';
+import EditEventForm from './components/EditEventForm';
 import MyAccountForm from './components/MyAccountForm';
-import ActivityDetail from './components/ActivityDetail';
+import EventDetail from './components/EventDetail';
 import ParticipantDetail from './components/ParticipantDetail';
+import Register from './components/Register';
+import Login from './components/Login';
+import Nav from './components/Nav';
 
 function App() {
+  const [username, setUsername] = useState("");
   return (
     <div className="App">
-    <BrowserRouter>
-      <Routes>
-          <Route element={<LoginForm></LoginForm>} path="/" />
-          <Route element={<LogoutForm></LogoutForm>} path="/logout" />
-          <Route element={<RegistrationForm></RegistrationForm>} path="/register" />
-          <Route element={<DashboardForm></DashboardForm>} path="/dashboard" />
-          <Route element={<AddActivityForm></AddActivityForm>} path="/createActivity" />
-          <Route element={<EditActivityForm></EditActivityForm>} path="/editActivity/:id" />
-          <Route element={<MyAccountForm></MyAccountForm>} path="/myAccount" />
-          <Route element={<ActivityDetail></ActivityDetail>} path="/activityDetail/:id" />
-          <Route element={<ParticipantDetail></ParticipantDetail>} path="/participantDetail/:id" />
-          
-      </Routes>
-    </BrowserRouter>                           
-  </div>
+      <BrowserRouter>
+      <Nav username={username} setUsername={setUsername} />
+        <Routes>
+          <Route path = '/' element={<Login username={username} setUsername={setUsername} />} />
+          <Route path = '/register' element={<Register username={username} setUsername={setUsername} />} />
+          <Route path="/logout" element={<LogoutForm username={username} setUsername={setUsername} />} />
+          <Route path="/dashboard" element={<DashboardForm username={username} setUsername={setUsername} />} />
+          <Route path="/createEvent" element={<AddEventForm username={username} setUsername={setUsername} />} />
+          <Route path="/editEvent/:id" element={<EditEventForm username={username} setUsername={setUsername} />} />
+          <Route path="/myAccount" element={<MyAccountForm username={username} setUsername={setUsername} />} />
+          <Route path="/eventDetail/:id" element={<EventDetail username={username} setUsername={setUsername} />} />
+          <Route path="/participantDetail/:id" element={<ParticipantDetail username={username} setUsername={setUsername} />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
