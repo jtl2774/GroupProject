@@ -92,5 +92,17 @@ module.exports.deleteParticipant = (request, response) => {
             response.json({ message: 'Participant Not Found', error: err })
         });
     
-        }
+}
+module.exports.cancelJoin = (req, res) =>{
+    Participant.deleteOne({userId: currentUserId, eventId: req.params.id})
+    .then((result) =>{
+        res.json(result)
+    })
+    .catch((err) =>{
+        res.status(400).json(err)
+    })
+
+
+}
+
         

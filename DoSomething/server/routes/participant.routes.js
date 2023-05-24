@@ -5,6 +5,6 @@ module.exports = (app) => {
     // this route now has to be authenticated
     app.get('/api/subscriptions', authenticate, ParticipantController.getSubscriptions); 
     app.post('/api/participant/join/:id', authenticate, ParticipantController.createParticipant);     /* This is new */
-    app.delete('/api/participant/delete/:id', authenticate, ParticipantController.deleteParticipant);
+    app.delete('/api/participant/delete/:id', authenticate, ParticipantController.cancelJoin);
 }
 

@@ -50,6 +50,18 @@ const MyAccountForm = () => {
             .catch(err => console.log(err))
     }
 
+    const cancelHandler = (id) =>{
+        axios.delete(`http://localhost:8000/api/participant/delete/${id}`, {withCredentials:true})
+        .then((res) =>{
+            console.log(res)
+            const updatedParticipantList = participantList.filter((listing)=>listing.eventId !== id)
+            setParticipantList(updatedParticipantList)
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
+
     return (
         <div className="container">
             <h3>You are hosting...</h3>
@@ -108,6 +120,10 @@ const MyAccountForm = () => {
                         <Link to={"/eventDetail/" + participant.eventId}>
                             View
                         </Link>
+                        <span className="space">|</span>
+                        <button onClick={(e)=>{cancelHandler(participant.eventId)}}>
+                            Cancel
+                        </button>
                         </div>
                     </td>
                     </tr>
