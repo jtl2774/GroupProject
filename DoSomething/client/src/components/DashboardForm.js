@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios';
-const DashboardForm = () => {
+const DashboardForm = (props) => {
+    const {username, setUsername} = props;
     const navigate = useNavigate();
     //keep track of what is being typed via useState hook
     const [eventList, setEventList] = useState([]); 
@@ -9,25 +10,28 @@ const DashboardForm = () => {
     const api = axios.create({ withCredentials: true });
 
     useEffect(() => {
-        let uId = localStorage.getItem("id");
-        setUserId(uId);
+        //let uId = localStorage.getItem("id");
+        //setUserId(uId);
+        setUsername(localStorage.getItem("firstName"));
+        
 
-        api.get('http://localhost:8000/api/events').then(response=>{
-          let list = [];
-          for (let i in response.data.events) {
-            list.push(response.data.events[i]);
-          }
+        api.get('http://localhost:8000/api/events').then(response => {
+            let list = [];
+            for (let i in response.data.events) {
+                list.push(response.data.events[i]);
+            }
 
-          console.log(list);
+            console.log(list);
 
-          setEventList(list)
+            setEventList(list)
         });
-    
-      }, []);
+
+    }, []);
 
 
     return (
         <div className="container">
+            <h2>Pick something fun to join!</h2>
             <table className="table">
             <tr>
                 <th scope="col">Location</th>

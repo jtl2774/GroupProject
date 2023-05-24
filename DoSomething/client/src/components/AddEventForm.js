@@ -41,6 +41,7 @@ const AddEventForm = () => {
     
     return (
         <div className="container">
+            <h2>Create your event!</h2>
             <fieldset>
             {errors.map((err, index) => <p className="error" key={index}>{err}</p>)}
             <form onSubmit={addEvent}>

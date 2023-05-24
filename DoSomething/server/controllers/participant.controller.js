@@ -16,7 +16,7 @@ module.exports.createParticipant = (request, response) => {
         .then(async (participant) => {
         console.log(participant);
         if (participant) {
-            response.json({ message: 'Already Subscribed', error: 'Already Subscribed' });
+            response.status(400).json({ message: 'Already Subscribed', error: 'Already Subscribed' });
         } else {
             Participant.create(params) //This will use whatever the body of the client's request sends over
                 .then(participant => response.json(participant))

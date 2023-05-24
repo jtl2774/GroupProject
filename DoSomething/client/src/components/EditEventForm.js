@@ -55,6 +55,7 @@ const EditEventForm = () => {
     
     return (
         <div className="container">
+            <h2>Need to change something?</h2>
             <fieldset>
             {errors.map((err, index) => <p className="error" key={index}>{err}</p>)}
             <form onSubmit={editEvent}>

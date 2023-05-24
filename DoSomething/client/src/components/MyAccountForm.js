@@ -4,54 +4,55 @@ import axios from 'axios';
 const MyAccountForm = () => {
     const navigate = useNavigate();
     //keep track of what is being typed via useState hook
-    const [eventList, setEventList] = useState([]); 
-    const [participantList, setParticipantList] = useState([]); 
+    const [eventList, setEventList] = useState([]);
+    const [participantList, setParticipantList] = useState([]);
     const api = axios.create({ withCredentials: true });
 
     useEffect(() => {
-        api.get('http://localhost:8000/api/my-events').then(response=>{
-          let list = [];
-          for (let i in response.data.events) {
-            list.push(response.data.events[i]);
-          }
+        api.get('http://localhost:8000/api/my-events').then(response => {
+            let list = [];
+            for (let i in response.data.events) {
+                list.push(response.data.events[i]);
+            }
 
-          console.log(list);
+            console.log(list);
 
-          setEventList(list)
+            setEventList(list)
         });
 
-        api.get('http://localhost:8000/api/subscriptions').then(response=>{
+        api.get('http://localhost:8000/api/subscriptions').then(response => {
             let list = [];
             for (let i in response.data.participants) {
-              list.push(response.data.participants[i]);
+                list.push(response.data.participants[i]);
             }
             console.log("Participant");
             console.log(list);
-  
+
             setParticipantList(list)
-          });
-    
-      }, []);
+        });
+
+    }, []);
 
 
-      const deleteEvent = (id) => {
+    const deleteEvent = (id) => {
         api.delete('http://localhost:8000/api/event/delete/' + id)
             .then(res => {
                 console.log(res); // always console log to get used to tracking your data!
-                setEventList(  
-                [ 
-                ...eventList.filter(event => event._id != id), 
-              ]);
-              setParticipantList(  
-                [ 
-                ...participantList.filter(participant => participant.eventId != id), 
-              ]);
+                setEventList(
+                    [
+                        ...eventList.filter(event => event._id != id),
+                    ]);
+                setParticipantList(
+                    [
+                        ...participantList.filter(participant => participant.eventId != id),
+                    ]);
             })
             .catch(err => console.log(err))
     }
 
     return (
         <div className="container">
+            <h3>You are hosting...</h3>
             <table className="table">
             <tr>
                 <th scope="col">Location</th>
@@ -88,7 +89,7 @@ const MyAccountForm = () => {
             </table>
             <br />
             <br />
-            <h3>You are going to...</h3>
+            <h3>You are going ...</h3>
             <table className="table">
             <tr>
                 <th scope="col">Location</th>
