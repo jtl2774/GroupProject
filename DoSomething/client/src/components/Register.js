@@ -98,7 +98,7 @@ const Register = (props) => {
                     <input type="submit" value="Register" className='btn btn-secondary' style={{ margin: "10px"}} />
                 </div>
             </form>
-            <Link to={'/dashboard/'} style={{color:"DodgerBlue"}}>Already have an accout? Please Log in.</Link>
+            <Link to={'/'} style={{color:"DodgerBlue"}}>Already have an accout? Please Log in.</Link>
         </div>
     );
 }
