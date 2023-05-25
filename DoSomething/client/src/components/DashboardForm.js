@@ -30,9 +30,9 @@ const DashboardForm = (props) => {
 
 
     return (
-        <div className="container">
+        <div className='container'>
             <h2>Pick something fun to join!</h2>
-            <table className="table">
+            <table className="table table-hover">
             <tr>
                 <th scope="col">Location</th>
                 <th scope="col">Activity</th>

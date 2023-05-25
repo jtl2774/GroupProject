@@ -103,7 +103,7 @@ const AddEventForm = () => {
             <tr>
             <td className="submit-button" colspan="2">
                 <div className="center">
-            <input className="b1" type="submit" value="Create"/>
+            <input className="btn btn-success" type="submit" value="Create"/>
             </div>
             </td>
             </tr>

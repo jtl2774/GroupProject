@@ -65,7 +65,7 @@ const MyAccountForm = () => {
     return (
         <div className="container">
             <h3>You are hosting...</h3>
-            <table className="table">
+            <table className="table table-hover">
             <tr>
                 <th scope="col">Location</th>
                 <th scope="col">Activity</th>
@@ -101,8 +101,8 @@ const MyAccountForm = () => {
             </table>
             <br />
             <br />
-            <h3>You are going ...</h3>
-            <table className="table">
+            <h3>You are going to...</h3>
+            <table className="table table-hover">
             <tr>
                 <th scope="col">Location</th>
                 <th scope="col">Activity</th>
@@ -121,7 +121,7 @@ const MyAccountForm = () => {
                             View
                         </Link>
                         <span className="space">|</span>
-                        <button onClick={(e)=>{cancelHandler(participant.eventId)}}>
+                        <button className='btn btn-outline-danger' onClick={(e)=>{cancelHandler(participant.eventId)}}>
                             Cancel
                         </button>
                         </div>

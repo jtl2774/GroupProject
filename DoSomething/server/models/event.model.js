@@ -30,7 +30,7 @@ const EventSchema =  new mongoose.Schema({
     desc:{
         type: String,
         required: [true, 'Address is required'],
-        minLength: [3,'Address must be 3 or more characters']
+        minLength: [3,'Description must be 3 or more characters']
     }
 
 }, {timestamps:true})

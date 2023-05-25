@@ -50,7 +50,7 @@ const Login = (props) => {
                     }
                 </div>
                 <div>
-                    <input type="submit" value="Login" className='btn btn-secondary' style={{ margin: "10px"}} />
+                    <input type="submit" value="Login" className='btn btn-primary' style={{ margin: "10px"}} />
                 </div>
             </form>
             <Link to={'/register'} style={{color:"DodgerBlue"}}>Do not have an account? Create one!</Link>
