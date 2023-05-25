@@ -52,74 +52,76 @@ const EventDetail = () => {
 
     return (
         <div className="container">
-            <div className="columns">
-                <div className="left-event">
-                    <h2>{activity}</h2>
-                    <table>
-                        <tbody>
-                        <tr>
-                                <td>
-                                    <label>Location:</label>
-                                </td><td>
-                                    {location}
-                                </td>
-                            </tr>
+            <div className='border border-dark-subtle'>
+                <div className="columns">
+                    <div className="left-event">
+                        <h2>{activity}</h2>
+                        <table>
+                            <tbody>
                             <tr>
-                                <td>
-                                    <label>Date/Time:</label>
-                                </td><td>
-                                    {date}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Address:</label>
-                                </td><td>
-                                    {address}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <label>Description:</label>
-                                </td><td>
-                                    {desc}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td className="submit-button" colSpan="2">
-                                    <span className="join">
-                                        <Link className="button" onClick={joinEvent}>
-                                            Join
-                                        </Link>
-                                    </span>
-                                    <span className="back">
-                                        <a className="button" href="/myAccount">Back</a>
-                                    </span>
-                                    {
-                                            errorMessage? 
-                                            <p style={{color:"red"}}>{errorMessage}</p>: null
-                                        }
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div className="left">
-                    <h4>Who is Coming?</h4>
-                    <div className="participants">
-                        {
-                            participantList.map((participant, index) =>
-                                <Link to={"/participantDetail/" + participant.userId}>
-                                    <div className="profile" key={participant._id}>
-                                        <div><img src="https://i.ibb.co/R6XWKCp/profile.jpg" width="50" /></div>
-                                        <div>{participant.firstName}</div>
-                                    </div>
-                                </Link>
-                            )
-                        }
+                                    <td>
+                                        <label>Location:</label>
+                                    </td><td>
+                                        {location}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Date/Time:</label>
+                                    </td><td>
+                                        {date}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Address:</label>
+                                    </td><td>
+                                        {address}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <label>Description:</label>
+                                    </td><td>
+                                        {desc}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td className="submit-button" colSpan="2">
+                                        <span className="join">
+                                            <Link className="btn btn-outline-info" onClick={joinEvent}>
+                                                Join
+                                            </Link>
+                                        </span>
+                                        <span className="back">
+                                            <a className="btn btn-outline-info" href="/myAccount">Back</a>
+                                        </span>
+                                        {
+                                                errorMessage? 
+                                                <p style={{color:"red"}}>{errorMessage}</p>: null
+                                            }
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div className="left">
+                        <h4>Who is Coming?</h4>
+                        <div className="participants">
+                            {
+                                participantList.map((participant, index) =>
+                                    <Link to={"/participantDetail/" + participant.userId}>
+                                        <div className="profile" key={participant._id}>
+                                            <div><img src="https://i.ibb.co/R6XWKCp/profile.jpg" width="50" /></div>
+                                            <div>{participant.firstName}</div>
+                                        </div>
+                                    </Link>
+                                )
+                            }
+                        </div>
                     </div>
                 </div>
-            </div>
+            </div>        
         </div>
     )
 }

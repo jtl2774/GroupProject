@@ -95,7 +95,7 @@ const Register = (props) => {
                     <textarea className='form-control' type="text" name="aboutMe" onChange={changeHandler} value={user.aboutMe} />
                 </div>
                 <div>
-                    <input type="submit" value="Register" className='btn btn-secondary' style={{ margin: "10px"}} />
+                    <input type="submit" value="Register" className='btn btn-primary' style={{ margin: "10px"}} />
                 </div>
             </form>
             <Link to={'/'} style={{color:"DodgerBlue"}}>Already have an accout? Please Log in.</Link>

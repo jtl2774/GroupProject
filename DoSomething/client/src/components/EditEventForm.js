@@ -117,7 +117,7 @@ const EditEventForm = () => {
             <tr>
             <td className="submit-button" colSpan="2">
                 <div className="center">
-            <input className="b1" type="submit" value="Edit"/>
+            <input className="btn btn-primary" type="submit" value="Edit"/>
             </div>
             </td>
             </tr>
