@@ -33,27 +33,29 @@ const Login = (props) => {
     }
 
     return (
-        <div>
-            <h2>Login</h2>
-            <form onSubmit={submitHandler}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                    <label className='form-label'>Email:</label>
-                    <input className='form-control' type="text" name="email" onChange={changeHandler} value={userLogin.email} />
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                    <label className='form-label'>Password:</label>
-                    <input className='form-control' type="password" name="password" onChange={changeHandler} value={userLogin.password} />
-                    {
-                        errors ?
-                            <p style={{ color: "red" }} >{errors.message}</p> :
-                            null
-                    }
-                </div>
-                <div>
-                    <input type="submit" value="Login" className='btn btn-primary' style={{ margin: "10px"}} />
-                </div>
-            </form>
-            <Link to={'/register'} style={{color:"DodgerBlue"}}>Do not have an account? Create one!</Link>
+        <div style={{display:"flex", justifyContent:"center"}}>
+            <div>
+                <h2>Login</h2>
+                <form onSubmit={submitHandler}>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                        <label className='form-label'>Email:</label>
+                        <input className='form-control' type="text" name="email" onChange={changeHandler} value={userLogin.email} />
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                        <label className='form-label'>Password:</label>
+                        <input className='form-control' type="password" name="password" onChange={changeHandler} value={userLogin.password} />
+                        {
+                            errors ?
+                                <p style={{ color: "red" }} >{errors.message}</p> :
+                                null
+                        }
+                    </div>
+                    <div>
+                        <input type="submit" value="Login" className='btn btn-primary' style={{ margin: "10px" }} />
+                    </div>
+                </form>
+                <Link to={'/register'} style={{ color: "DodgerBlue" }}>Do not have an account? Create one!</Link>
+            </div>
         </div>
     );
 }

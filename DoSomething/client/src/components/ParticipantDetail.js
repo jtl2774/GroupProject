@@ -18,7 +18,7 @@ const ParticipantDetail = () => {
     
     return (
         <div className="container">
-            <div className='border border-dark-subtle'>
+            <div className='border border-dark-subtle' style={{padding:"20px"}}>
             <div className="participant">
             <div className="participant-name"><h2>{participant.firstName}</h2></div><div className="participant-picture"><img src="https://i.ibb.co/R6XWKCp/profile.jpg" width="50" /></div>
             </div>

@@ -101,7 +101,7 @@ const MyAccountForm = () => {
             </table>
             <br />
             <br />
-            <h3>You are going to...</h3>
+            <h3>You are going...</h3>
             <table className="table table-hover">
             <tr>
                 <th scope="col">Location</th>

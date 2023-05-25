@@ -38,67 +38,69 @@ const Register = (props) => {
     }
 
     return (
-        <div> 
-            <h2>Register</h2>
-            <form onSubmit={submitHandler}>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                    <label className='form-label'>First Name:</label>
-                    <input className='form-control' type="text" name="firstName" onChange={changeHandler} value={user.firstName} />
-                    {
-                        errors.firstName ?
-                            <p style={{ color: "red" }}>{errors.firstName.message}</p> :
-                            null
-                    }
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                    <label className='form-label'>Last Name:</label>
-                    <input className='form-control' type="text" name="lastName" onChange={changeHandler} value={user.lastName} />
-                    {
-                        errors.lastName ?
-                            <p style={{ color: "red" }}>{errors.lastName.message}</p> :
-                            null
-                    }
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                    <label className='form-label'>Email:</label>
-                    <input className='form-control' type="text" name="email" onChange={changeHandler} value={user.email} />
-                    {
-                        errors.email ?
-                            <p style={{ color: "red" }}>{errors.email.message}</p> :
-                            null
-                    }
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                    <label className='form-label'>Password:</label>
-                    <input className='form-control' type="password" name="password" onChange={changeHandler} value={user.password} />
-                    {
-                        errors.password ?
-                            <p style={{ color: "red" }}>{errors.password.message}</p> :
-                            null
-                    }
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                    <label className='form-label'>Confirm Password:</label>
-                    <input className='form-control' type="password" name="confirmPassword" onChange={changeHandler} value={user.confirmPassword} />
-                    {
-                        errors.confirmPassword ?
-                            <p style={{ color: "red" }}>{errors.confirmPassword.message}</p> :
-                            null
-                    }
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                    <label className='form-label'>Location:</label>
-                    <input className='form-control' type="text" name="location" onChange={changeHandler} value={user.location} />
-                </div>
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
-                    <label className='form-label'>About me:</label>
-                    <textarea className='form-control' type="text" name="aboutMe" onChange={changeHandler} value={user.aboutMe} />
-                </div>
-                <div>
-                    <input type="submit" value="Register" className='btn btn-primary' style={{ margin: "10px"}} />
-                </div>
-            </form>
-            <Link to={'/'} style={{color:"DodgerBlue"}}>Already have an accout? Please Log in.</Link>
+        <div style={{ display: "flex", justifyContent: "center" }}>
+            <div>
+                <h2>Register</h2>
+                <form onSubmit={submitHandler}>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                        <label className='form-label'>First Name:</label>
+                        <input className='form-control' type="text" name="firstName" onChange={changeHandler} value={user.firstName} />
+                        {
+                            errors.firstName ?
+                                <p style={{ color: "red" }}>{errors.firstName.message}</p> :
+                                null
+                        }
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                        <label className='form-label'>Last Name:</label>
+                        <input className='form-control' type="text" name="lastName" onChange={changeHandler} value={user.lastName} />
+                        {
+                            errors.lastName ?
+                                <p style={{ color: "red" }}>{errors.lastName.message}</p> :
+                                null
+                        }
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                        <label className='form-label'>Email:</label>
+                        <input className='form-control' type="text" name="email" onChange={changeHandler} value={user.email} />
+                        {
+                            errors.email ?
+                                <p style={{ color: "red" }}>{errors.email.message}</p> :
+                                null
+                        }
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                        <label className='form-label'>Password:</label>
+                        <input className='form-control' type="password" name="password" onChange={changeHandler} value={user.password} />
+                        {
+                            errors.password ?
+                                <p style={{ color: "red" }}>{errors.password.message}</p> :
+                                null
+                        }
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                        <label className='form-label'>Confirm Password:</label>
+                        <input className='form-control' type="password" name="confirmPassword" onChange={changeHandler} value={user.confirmPassword} />
+                        {
+                            errors.confirmPassword ?
+                                <p style={{ color: "red" }}>{errors.confirmPassword.message}</p> :
+                                null
+                        }
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                        <label className='form-label'>Location:</label>
+                        <input className='form-control' type="text" name="location" onChange={changeHandler} value={user.location} />
+                    </div>
+                    <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+                        <label className='form-label'>About me:</label>
+                        <textarea className='form-control' type="text" name="aboutMe" onChange={changeHandler} value={user.aboutMe} />
+                    </div>
+                    <div>
+                        <input type="submit" value="Register" className='btn btn-primary' style={{ margin: "10px" }} />
+                    </div>
+                </form>
+                <Link to={'/'} style={{ color: "DodgerBlue" }}>Already have an accout? Please Log in.</Link>
+            </div>
         </div>
     );
 }

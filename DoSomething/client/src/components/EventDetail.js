@@ -52,19 +52,20 @@ const EventDetail = () => {
 
     return (
         <div className="container">
-            <div className='border border-dark-subtle'>
+            <div >
                 <div className="columns">
                     <div className="left-event">
-                        <h2>{activity}</h2>
-                        <table>
+                        <h2>Let's meet at <span style={{fontWeight:"bold"}}> {location} </span> for <span style={{fontWeight:"bold"}}> {activity} </span></h2>
+                        <table style={{width:"600px"}}>
                             <tbody>
-                            <tr>
+{/*                            <tr>
                                     <td>
                                         <label>Location:</label>
                                     </td><td>
                                         {location}
                                     </td>
-                                </tr>
+                                </tr>}
+    */}                                
                                 <tr>
                                     <td>
                                         <label>Date/Time:</label>
