@@ -26,14 +26,6 @@ const ParticipantDetail = () => {
             <tbody>
             <tr>
             <td>
-                Gender: 
-            </td>
-            <td>
-            {participant.gender}
-            </td>
-            </tr>
-            <tr>
-            <td>
                 Location: 
             </td>
             <td>
